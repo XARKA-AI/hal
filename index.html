@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" data-splash="1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' https://assets.mixkit.co https://d2nev2c5v9t8b9.cloudfront.net; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      name="description"
+      content="HAL Offshore — India's trusted oil and gas offshore services provider. Fleet management, marine logistics, and energy solutions with decades of operational excellence."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <!-- No static rel=canonical here: `SiteSeo` emits a per-route canonical, and
+         a hard-coded one would sit alongside it on every sub-page, telling
+         crawlers each route is a duplicate of the homepage. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs documentation" />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/about-platform-mobile.webp"
+      imagesrcset="/images/about-platform-mobile.webp 828w, /images/about-platform.webp 1469w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+    <title>HAL Offshore Limited | Offshore &amp; Onshore Oil &amp; Gas Services</title>
+    <!-- First paint is the real homepage hero so Speed Index / LCP don't wait on JS. -->
+    <style>
+      html, body {
+        background: #030912;
+      }
+      #root {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+      html[data-splash="1"],
+      html[data-splash="1"] body {
+        overflow: hidden !important;
+        height: 100%;
+        overscroll-behavior: none;
+        touch-action: none;
+      }
+      #app-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #030912;
+        transition: opacity 220ms ease, visibility 220ms ease;
+      }
+      #app-splash[data-state="leaving"] {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .app-splash__hero {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .app-splash__copy {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        padding: 0 1.25rem 6rem;
+      }
+      .app-splash__copy-inner {
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+      .app-splash__copy h1 {
+        margin: 0;
+        font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-weight: 700;
+        font-size: clamp(2.25rem, 7vw, 5.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+      }
+      .app-splash__copy h1 span {
+        color: #ffca23;
+      }
+      @media (min-width: 640px) {
+        .app-splash__copy { padding: 0 1.5rem 7rem; }
+      }
+      @media (min-width: 1024px) {
+        .app-splash__copy { padding: 0 2rem 8rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #app-splash { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-splash" role="status" aria-label="Loading HAL Offshore">
+      <img
+        class="app-splash__hero"
+        src="/images/about-platform-mobile.webp"
+        srcset="/images/about-platform-mobile.webp 828w, /images/about-platform.webp 1469w"
+        sizes="100vw"
+        width="1469"
+        height="1071"
+        alt=""
+        decoding="async"
+        fetchpriority="high"
+      />
+      <div class="app-splash__copy" aria-hidden="true">
+        <div class="app-splash__copy-inner">
+          <h1>HAL Offshore <span>Limited</span></h1>
+        </div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+# HAL Offshore Limited
+
+> India's trusted oil and gas offshore services provider — fleet management, marine logistics, EPC, and energy solutions.
+
+HAL Offshore Limited (HAL Offshore) is a leading force in India's oil & gas sector, delivering end-to-end offshore and onshore solutions. This site is the official corporate web presence.
+
+## Canonical site
+
+- Production: https://haloffshore.com
+- Staging: https://haloffshore.vercel.app
+
+## Allowed use
+
+- Crawl and index all public pages listed below
+- Quote factual company information with attribution to HAL Offshore Limited
+- Do not crawl `/haloffshore/` (internal admin) or `/api/` routes
+
+## Primary pages
+
+- [Home](https://haloffshore.com/): Corporate landing — hero, clients, services, fleet, news, investors
+- [About](https://haloffshore.com/about): Company overview, leadership, journey, HSE, management
+- [Businesses](https://haloffshore.com/businesses): Business lines overview
+- [Offshore EPC](https://haloffshore.com/businesses/offshore-epc): Offshore engineering, procurement & construction
+- [Onshore EPC](https://haloffshore.com/businesses/onshore-epc): Onshore EPC and project delivery
+- [Upstream Oil & Gas](https://haloffshore.com/businesses/upstream-oil-gas): Upstream services
+- [BOO / O&M](https://haloffshore.com/businesses/boo-om): Build-own-operate and operations & maintenance
+- [Green Energy](https://haloffshore.com/businesses/green-energy): Renewable and green energy initiatives
+- [Flagship Projects](https://haloffshore.com/businesses/flagship-projects): Major project portfolio
+- [Nandasan](https://haloffshore.com/businesses/flagship-projects/nandasan): Nandasan project gallery
+- [BCPB-2](https://haloffshore.com/businesses/flagship-projects/bcpb-2): Bassein field BCPB-2 compressor retrofit gallery
+- [MOL pumps](https://haloffshore.com/businesses/flagship-projects/mol-pumps): BHS platform MOL pump replacement gallery
+- [Solar turbine](https://haloffshore.com/businesses/flagship-projects/solar-turbine): Solar turbine control system replacement gallery
+- [Cluster C](https://haloffshore.com/businesses/flagship-projects/cluster-c): Cluster C onshore EPC delivery gallery
+- [Careers](https://haloffshore.com/careers): Open roles and applications
+- [Contact](https://haloffshore.com/contact): Enquiries — info@haloffshore.com
+
+## Languages
+
+Content is available in English (en), Hindi (hi), and Arabic (ar) via the site language switcher.
+
+## Sitemap & robots
+
+- Sitemap: https://haloffshore.com/sitemap.xml
+- Robots: https://haloffshore.com/robots.txt
+
+## Contact
+
+- Email: info@haloffshore.com
+- Careers: careers@haloffshore.in
+- Parent group: [MM Agrawal Group](https://www.mmgindia.in/)

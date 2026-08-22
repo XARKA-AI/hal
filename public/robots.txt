@@ -1,0 +1,32 @@
+# HAL Offshore — https://haloffshore.com
+User-agent: *
+Allow: /
+Disallow: /haloffshore/
+Disallow: /api/
+
+# AI / LLM crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://haloffshore.com/sitemap.xml
