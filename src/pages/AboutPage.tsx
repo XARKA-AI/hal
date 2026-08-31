@@ -15,23 +15,13 @@ import {
   StandardPageHeroInset,
 } from "../components/standard-page-hero-inset"
 import { Footer } from "../sections/footer"
-
-const milestonesTimeline = [
-  { id: "m1" },
-  { id: "m2" },
-  { id: "m3" },
-  { id: "m4" },
-  { id: "m5" },
-  { id: "m6", listKeys: ["item1", "item2", "item3", "item4"] as const },
-  { id: "m7", extraBody: true },
-  { id: "m8" },
-  { id: "m9" },
-  { id: "m10", hideTitle: true },
-] as const
+import { GroupCompaniesSection } from "../sections/group-companies"
+import { JOURNEY_MILESTONES } from "../data/journey-milestones"
 
 const sectionNav = [
   { id: "overview", labelKey: "aboutPage.overview.title" },
   { id: "company", labelKey: "aboutPage.company.title" },
+  { id: "subsidiaries", labelKey: "aboutPage.subsidiaries.title" },
   { id: "chairman", labelKey: "aboutPage.chairman.title" },
   { id: "vice-chairman", labelKey: "aboutPage.viceChairman.navLabel" },
   { id: "ceo", labelKey: "aboutPage.ceo.navLabel" },
@@ -319,6 +309,8 @@ export function AboutPage() {
               />
             </section>
 
+            <GroupCompaniesSection />
+
             <section
               id="chairman"
               className="scroll-mt-40 -mx-6 rounded-sm border-y border-neutral-200/90 bg-neutral-50/60 px-6 py-12 md:-mx-8 md:px-8 md:py-16 lg:mx-0 lg:px-0 lg:py-20"
@@ -441,8 +433,8 @@ export function AboutPage() {
               <div id="journey" className="scroll-mt-40" />
               <ValenceSectionHeader title={t("aboutPage.milestones.title")} />
               <ol className="mx-auto mt-14 max-w-3xl list-none md:mt-20">
-                {milestonesTimeline.map((item, i) => {
-                  const isLast = i === milestonesTimeline.length - 1
+                {JOURNEY_MILESTONES.map((item, i) => {
+                  const isLast = i === JOURNEY_MILESTONES.length - 1
                   return (
                     <motion.li
                       key={item.id}

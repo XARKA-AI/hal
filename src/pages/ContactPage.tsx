@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react"
 import { useLanguage } from "../components/language-context"
 import { PageSeo } from "../components/seo"
 import { ROUTE_SEO } from "../config/site"
 import { StandardPageHeroInset } from "../components/standard-page-hero-inset"
+import { Footer } from "../sections/footer"
 import {
   Select,
   SelectContent,
@@ -50,6 +51,61 @@ function buildMailto(form: {
   return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
+function SubsidiaryCard({
+  name,
+  regs,
+  addressLabel,
+  address,
+  contactLabel,
+  person,
+  phone,
+  phoneHref,
+  email,
+}: {
+  name: string
+  regs: string[]
+  addressLabel: string
+  address: string
+  contactLabel: string
+  person: string
+  phone: string
+  phoneHref: string
+  email: string
+}) {
+  return (
+    <article className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8">
+      <h3 className="text-xl font-bold text-white sm:text-2xl">{name}</h3>
+      <ul className="mt-4 space-y-1.5 text-sm text-white/75 sm:text-base">
+        {regs.map((line) => (
+          <li key={line}>{line}</li>
+        ))}
+      </ul>
+      <div className="mt-6">
+        <p className="text-xs font-semibold uppercase tracking-wider text-white/50">{addressLabel}</p>
+        <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-white/85 sm:text-base">{address}</p>
+      </div>
+      <div className="mt-6 border-t border-white/10 pt-5">
+        <p className="text-xs font-semibold uppercase tracking-wider text-white/50">{contactLabel}</p>
+        <p className="mt-2 text-sm font-medium text-white sm:text-base">{person}</p>
+        <a
+          href={phoneHref}
+          className="mt-2 inline-flex items-center gap-2 text-sm text-white/80 hover:text-[#FFCA23]"
+        >
+          <Phone className="h-4 w-4 shrink-0" />
+          {phone}
+        </a>
+        <a
+          href={`mailto:${email}`}
+          className="mt-1 flex items-center gap-2 text-sm text-white/80 hover:text-[#FFCA23]"
+        >
+          <Mail className="h-4 w-4 shrink-0" />
+          {email}
+        </a>
+      </div>
+    </article>
+  )
+}
+
 export function ContactPage() {
   const seo = ROUTE_SEO["/contact"]
   const { t, language } = useLanguage()
@@ -80,9 +136,18 @@ export function ContactPage() {
 
   const dir = language === "ar" ? "rtl" : "ltr"
 
+  useEffect(() => {
+    if (!window.location.hash) return
+    const timer = window.setTimeout(() => {
+      document.querySelector(window.location.hash)?.scrollIntoView({ behavior: "smooth" })
+    }, 80)
+    return () => window.clearTimeout(timer)
+  }, [])
+
   return (
-    <div className="relative min-h-screen overflow-hidden" dir={dir}>
+    <div className="min-h-screen overflow-x-clip" dir={dir}>
       <PageSeo title={seo.title} description={seo.description} path={seo.path} />
+      <div className="relative">
       <div className="absolute inset-0 overflow-hidden" aria-hidden>
         <img
           src="/images/hal-1.webp"
@@ -94,7 +159,7 @@ export function ContactPage() {
       </div>
       <div className="absolute inset-0 bg-[#001F3F]/85 backdrop-blur-[2px]" />
 
-      <div className="relative z-10 px-4 pb-14 pt-6 sm:px-6">
+      <div className="relative z-10 px-4 pb-14 pt-0 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <StandardPageHeroInset
             crumbs={[
@@ -102,7 +167,7 @@ export function ContactPage() {
               { label: t("nav.contact") },
             ]}
             title={t("nav.contact")}
-            wrapperClassName="px-0 pb-10 pt-8 sm:pb-12 sm:pt-10"
+            wrapperClassName="px-0 pb-10 pt-28 sm:pb-12 sm:pt-32"
           />
 
           <div className="grid lg:grid-cols-3 gap-10">
@@ -300,8 +365,55 @@ export function ContactPage() {
               )}
             </motion.div>
           </div>
+
+          <section id="subsidiaries" className="scroll-mt-28 mt-16 pb-6 sm:mt-20 md:mt-24">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#FFCA23]">
+              {t("contactPage.subsidiaries.kicker")}
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
+              {t("contactPage.subsidiaries.title")}
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70 sm:text-lg">
+              {t("contactPage.subsidiaries.lead")}
+            </p>
+            <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
+              <SubsidiaryCard
+                name={t("contactPage.ksa.name")}
+                regs={[
+                  t("contactPage.ksa.cr"),
+                  t("contactPage.ksa.nationalization"),
+                  t("contactPage.ksa.anid"),
+                  t("contactPage.ksa.vendor"),
+                ]}
+                addressLabel={t("contactPage.ksa.addressLabel")}
+                address={t("contactPage.ksa.address")}
+                contactLabel={t("contactPage.ksa.contactLabel")}
+                person={t("contactPage.ksa.person")}
+                phone={t("contactPage.ksa.phone")}
+                phoneHref="tel:+966556524049"
+                email={t("contactPage.ksa.email")}
+              />
+              <SubsidiaryCard
+                name={t("contactPage.uae.name")}
+                regs={[
+                  t("contactPage.uae.licence"),
+                  t("contactPage.uae.adcci"),
+                  t("contactPage.uae.icp"),
+                ]}
+                addressLabel={t("contactPage.uae.addressLabel")}
+                address={t("contactPage.uae.address")}
+                contactLabel={t("contactPage.uae.contactLabel")}
+                person={t("contactPage.uae.person")}
+                phone={t("contactPage.uae.phone")}
+                phoneHref="tel:+971566619162"
+                email={t("contactPage.uae.email")}
+              />
+            </div>
+          </section>
         </div>
       </div>
+      </div>
+      <Footer />
     </div>
   )
 }

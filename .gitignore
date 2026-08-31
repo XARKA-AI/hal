@@ -22,3 +22,7 @@ pnpm-debug.log*
 .vscode/
 .claude/
 .cursor/
+
+# Local notes / HAL tracking (do not commit)
+*.md
+!README.md

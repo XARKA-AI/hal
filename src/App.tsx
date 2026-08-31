@@ -20,6 +20,9 @@ import { Hero } from "./sections/hero"
 const Trust = lazy(() => import("./sections/trust").then((m) => ({ default: m.Trust })))
 const Features = lazy(() => import("./sections/features").then((m) => ({ default: m.Features })))
 const About = lazy(() => import("./sections/about").then((m) => ({ default: m.About })))
+const Milestones = lazy(() =>
+  import("./sections/milestones").then((m) => ({ default: m.Milestones })),
+)
 const Services = lazy(() => import("./sections/services").then((m) => ({ default: m.Services })))
 const HomeBusinesses = lazy(() =>
   import("./sections/home-businesses").then((m) => ({ default: m.HomeBusinesses })),
@@ -151,6 +154,7 @@ function HomePage() {
         <DeferredSection component={Trust} minHeight={220} rootMargin="160px 0px" />
         <DeferredSection component={Features} minHeight="100vh" rootMargin="200px 0px" />
         <DeferredSection component={About} minHeight={720} />
+        <DeferredSection component={Milestones} minHeight={900} />
         <DeferredSection component={Services} minHeight={720} />
         <DeferredSection component={HomeBusinesses} minHeight={640} />
         <DeferredSection component={Fleet} minHeight={560} />
@@ -206,6 +210,7 @@ function AppContent() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about/overview" element={<Navigate to="/about#overview" replace />} />
           <Route path="/about/company" element={<Navigate to="/about#company" replace />} />
+          <Route path="/about/subsidiaries" element={<Navigate to="/about#subsidiaries" replace />} />
           <Route path="/about/chairman" element={<Navigate to="/about#chairman" replace />} />
           <Route path="/about/ceo" element={<Navigate to="/about#ceo" replace />} />
           <Route path="/about/journey" element={<Navigate to="/about#journey" replace />} />
