@@ -207,6 +207,7 @@ function AppContent() {
           <Route path="/about/overview" element={<Navigate to="/about#overview" replace />} />
           <Route path="/about/company" element={<Navigate to="/about#company" replace />} />
           <Route path="/about/chairman" element={<Navigate to="/about#chairman" replace />} />
+          <Route path="/about/vice-chairman" element={<Navigate to="/about#vice-chairman" replace />} />
           <Route path="/about/ceo" element={<Navigate to="/about#ceo" replace />} />
           <Route path="/about/journey" element={<Navigate to="/about#journey" replace />} />
           <Route path="/about/milestones" element={<Navigate to="/about#milestones" replace />} />

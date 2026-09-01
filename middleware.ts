@@ -10,13 +10,15 @@ function isSkippablePath(pathname: string): boolean {
   return false
 }
 
-export default function middleware(request: Request): Promise<Response> {
+export default function middleware(request: Request): Promise<Response> | void {
   const isMaintenance = process.env.MAINTENANCE_MODE === "true"
   const url = new URL(request.url)
   const { pathname } = url
 
+  // Do not fetch the original URL. On Vercel that looks up a real file
+  // (there is no /about.html) and returns 404 before SPA rewrites run.
   if (!isMaintenance || isSkippablePath(pathname)) {
-    return fetch(request)
+    return
   }
 
   const maintenanceUrl = new URL(MAINTENANCE_PAGE, request.url)

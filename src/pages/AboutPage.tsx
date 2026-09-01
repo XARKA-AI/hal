@@ -40,6 +40,20 @@ const sectionNav = [
   { id: "management", labelKey: "aboutPage.management.title" },
 ] as const
 
+/** Alternate hashes that still scroll to the existing section IDs. */
+const ABOUT_HASH_ALIASES: Record<string, string> = {
+  "hal-company": "company",
+  "chairman-message": "chairman",
+  "ceo-coo": "ceo",
+  qhse: "hse",
+  "management-team": "management",
+}
+
+function resolveAboutHash(hash: string): string {
+  const id = decodeURIComponent(hash.replace(/^#/, ""))
+  return ABOUT_HASH_ALIASES[id] ?? id
+}
+
 const managementTeam = [
   { name: "Mr. Sanjeev Agarwal", role: "Chairman and strategic leadership." },
   {
@@ -172,7 +186,7 @@ export function AboutPage() {
 
   useEffect(() => {
     if (location.hash) {
-      const id = decodeURIComponent(location.hash.replace(/^#/, ""))
+      const id = resolveAboutHash(location.hash)
       const run = () => {
         const el = document.getElementById(id)
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -214,7 +228,7 @@ export function AboutPage() {
     }
   }, [])
 
-  const activeForHash = location.hash.replace(/^#/, "")
+  const activeForHash = location.hash ? resolveAboutHash(location.hash) : ""
   const sidebarActive = activeForHash && sectionNav.some((s) => s.id === activeForHash) ? activeForHash : activeSection
 
   return (
@@ -292,6 +306,7 @@ export function AboutPage() {
           <div className="mx-auto w-full max-w-6xl px-6 pb-24 pt-12 md:px-8 md:pb-32 md:pt-14 lg:pt-16 lg:pb-36 xl:px-10">
             {/* HAL Company — heading + copy live on full-bleed image */}
             <section id="company" className="scroll-mt-40 border-t border-neutral-200/80 pt-6 md:pt-8 lg:pt-10">
+              <div id="hal-company" className="pointer-events-none h-0 scroll-mt-40" aria-hidden />
               <FullBleedImage
                 src="/images/hal-3.webp"
                 alt=""
@@ -323,6 +338,7 @@ export function AboutPage() {
               id="chairman"
               className="scroll-mt-40 -mx-6 rounded-sm border-y border-neutral-200/90 bg-neutral-50/60 px-6 py-12 md:-mx-8 md:px-8 md:py-16 lg:mx-0 lg:px-0 lg:py-20"
             >
+              <div id="chairman-message" className="pointer-events-none h-0 scroll-mt-40" aria-hidden />
               <ValenceSectionHeader
                 label={t("aboutPage.chairman.kicker")}
                 title={t("aboutPage.chairman.title")}
@@ -401,6 +417,7 @@ export function AboutPage() {
               id="ceo"
               className="scroll-mt-40 border-t border-neutral-200/80 bg-white py-12 md:py-16 lg:py-20"
             >
+              <div id="ceo-coo" className="pointer-events-none h-0 scroll-mt-40" aria-hidden />
               <ValenceSectionHeader
                 label={t("aboutPage.ceo.kicker")}
                 title={t("aboutPage.ceo.title")}
@@ -493,6 +510,7 @@ export function AboutPage() {
 
             {/* HSE — divider list */}
             <section id="hse" className="scroll-mt-40 border-t border-neutral-200/80 pt-20 md:pt-28 lg:pt-32">
+              <div id="qhse" className="pointer-events-none h-0 scroll-mt-40" aria-hidden />
               <ValenceSectionHeader
                 label={t("aboutPage.hse.kicker")}
                 title={t("aboutPage.hse.title")}
@@ -532,6 +550,7 @@ export function AboutPage() {
 
             {/* Management — list rows */}
             <section id="management" className="scroll-mt-40 border-t border-neutral-200/80 pt-20 md:pt-28 lg:pt-32">
+              <div id="management-team" className="pointer-events-none h-0 scroll-mt-40" aria-hidden />
               <ValenceSectionHeader
                 label={t("aboutPage.management.kicker")}
                 title={t("aboutPage.management.title")}
