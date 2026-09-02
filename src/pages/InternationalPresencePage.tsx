@@ -24,6 +24,29 @@ const KSA = "#E87722"
 const UAE = "#005CB9"
 const NAVY = "#001F3F"
 
+const leadershipCards = [
+  {
+    id: "sanjeev",
+    photo: "/images/chairman-sanjeev-agarwal.webp",
+    objectPosition: "center 18%",
+  },
+  {
+    id: "anant",
+    photo: "/images/vice-chairman-anant-agarwal.webp",
+    objectPosition: "center 12%",
+  },
+  {
+    id: "vineet",
+    photo: "/images/ceo-vineet-agarwal.webp",
+    objectPosition: "center 16%",
+  },
+  {
+    id: "musalli",
+    photo: "/images/musalli-almuammar.webp",
+    objectPosition: "center center",
+  },
+] as const
+
 const MAP_W = 1200
 const MAP_H = 560
 const LAT_MAX = 78
@@ -460,6 +483,63 @@ export function InternationalPresencePage() {
                 </div>
               </OfficeCard>
             </motion.div>
+          </div>
+
+          <div className="mx-auto mt-14 max-w-6xl px-4 py-12 sm:mt-16 sm:px-6 sm:py-14 md:mt-20 md:px-10 md:py-16">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#E87722] sm:text-sm">
+              {t("aboutPage.leadership.kicker")}
+            </p>
+            <h2 className="mt-3 text-center text-3xl font-bold tracking-tight text-[#001F3F] sm:text-4xl">
+              {t("aboutPage.leadership.title")}
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-neutral-500 sm:text-base">
+              {t("aboutPage.leadership.lead")}
+            </p>
+            <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-8 md:mt-12 md:gap-10">
+              {leadershipCards.map((person, i) => {
+                const base = `aboutPage.leadership.${person.id}`
+                const paras = translatedLines(t, strings, `${base}.p`)
+                const role2 = `${base}.role2`
+                return (
+                  <motion.article
+                    key={person.id}
+                    {...fadeUp}
+                    transition={{ duration: 0.45, delay: i * 0.04 }}
+                    className="rounded-2xl border border-neutral-300 bg-white px-6 py-10 shadow-[0_12px_32px_-8px_rgba(0,31,63,0.28)] sm:px-10 sm:py-12 md:px-14"
+                  >
+                    <img
+                      src={person.photo}
+                      alt={t(`${base}.photoAlt`)}
+                      width={128}
+                      height={128}
+                      className="mx-auto h-28 w-28 rounded-full object-cover sm:h-32 sm:w-32"
+                      style={{ objectPosition: person.objectPosition }}
+                      decoding="async"
+                    />
+                    <h3 className="mt-6 text-center text-xl font-bold text-[#001F3F] sm:text-2xl">
+                      {t(`${base}.name`)}
+                    </h3>
+                    <p className="mt-2 text-center text-sm font-medium leading-snug text-[#E87722] sm:text-[0.9375rem]">
+                      {t(`${base}.role`)}
+                      {role2 in strings ? (
+                        <>
+                          <br />
+                          {t(role2)}
+                        </>
+                      ) : null}
+                    </p>
+                    <div className="mx-auto mt-5 h-px w-16 bg-[#E87722]/80" aria-hidden />
+                    <div className="mt-6 space-y-4 text-sm leading-relaxed text-neutral-600 sm:text-[0.9375rem] sm:leading-[1.7]">
+                      {paras.map((para) => (
+                        <p key={para.slice(0, 28)} className="text-pretty">
+                          {para}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.article>
+                )
+              })}
+            </div>
           </div>
 
           <motion.p
