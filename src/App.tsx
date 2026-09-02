@@ -11,6 +11,7 @@ import { DeferredSection } from "./components/deferred-section"
 import { SiteControllerProvider } from "./context/site-controller-provider"
 import { useSiteController } from "./hooks/useSiteController"
 import { CONTROLLER_ROUTES, isControllerPath } from "./config/site-controller"
+import { LEGACY_REDIRECTS } from "./config/legacy-redirects"
 import { useApplySitePreferences } from "./hooks/useApplySitePreferences"
 import { dismissInitialSplash } from "./lib/splash"
 // import { Chatbot } from "./components/chatbot"
@@ -219,6 +220,14 @@ function AppContent() {
           <Route path="/businesses/upstream-oil-gas" element={<UpstreamOilGasPage />} />
           <Route path="/businesses/offshore-epc" element={<OffshoreEpcPage />} />
           <Route path="/businesses/onshore-epc" element={<OnshoreEpcPage />} />
+          <Route
+            path="/businesses/offshore-epc/projects"
+            element={<Navigate to="/businesses/offshore-epc#offshore-projects" replace />}
+          />
+          <Route
+            path="/businesses/onshore-epc/projects"
+            element={<Navigate to="/businesses/onshore-epc#onshore-projects" replace />}
+          />
           <Route path="/businesses/boo-om" element={<BooOmPage />} />
           <Route path="/businesses/om" element={<Navigate to="/businesses/boo-om" replace />} />
           <Route path="/businesses/bot" element={<Navigate to="/businesses/boo-om" replace />} />
@@ -256,6 +265,11 @@ function AppContent() {
 
           {/* Contact */}
           <Route path="/contact" element={<ContactPage />} />
+
+          {/* Old PHP / Google sitelink URLs → current pages */}
+          {LEGACY_REDIRECTS.map((item) => (
+            <Route key={item.from} path={item.from} element={<Navigate to={item.to} replace />} />
+          ))}
 
           {/* Fallback */}
           <Route path="*" element={<UnderDevelopment pageName="Page Not Found" />} />

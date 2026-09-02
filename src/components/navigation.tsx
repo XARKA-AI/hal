@@ -74,8 +74,8 @@ const navItems: NavItemDef[] = [
         to: "/businesses/flagship-projects",
         noteKey: "nav.projects.flagshipNote",
       },
-      { labelKey: "nav.projects.offshoreEpc", to: "/businesses/offshore-epc" },
-      { labelKey: "nav.projects.onshoreEpc", to: "/businesses/onshore-epc" },
+      { labelKey: "nav.projects.offshoreEpc", to: { pathname: "/businesses/offshore-epc", hash: "#offshore-projects" } },
+      { labelKey: "nav.projects.onshoreEpc", to: { pathname: "/businesses/onshore-epc", hash: "#onshore-projects" } },
       {
         labelKey: "nav.projects.booOm",
         to: "/businesses/boo-om",

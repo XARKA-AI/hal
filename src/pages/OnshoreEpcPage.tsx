@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { useLocation } from "react-router"
 import { motion, useReducedMotion } from "framer-motion"
 import { useLanguage } from "../components/language-context"
 import {
@@ -7,6 +8,9 @@ import {
 } from "../components/standard-page-hero-inset"
 import { Footer } from "../sections/footer"
 import { translatedLines } from "../lib/i18n-helpers"
+import { onshoreEpcProjects } from "./onshore-epc/content"
+import { OnshoreProjectCaseStudy } from "./onshore-epc/OnshoreProjectCaseStudy"
+import { resolveOnshoreProject } from "../lib/resolve-translated-content"
 
 const fadeUp = {
   initial: { opacity: 0, y: 18 },
@@ -29,6 +33,7 @@ const DELIVERY_IDS = [1, 2, 3, 4] as const
 
 export function OnshoreEpcPage() {
   const { t, language, strings } = useLanguage()
+  const location = useLocation()
   const reduceMotion = useReducedMotion()
   const revealProps = reduceMotion
     ? {}
@@ -43,12 +48,22 @@ export function OnshoreEpcPage() {
   const footprintAdditional = translatedLines(t, strings, "onshoreEpc.footprint.additional")
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = `${t("onshoreEpc.pageTitle")} | HAL Offshore`
     return () => {
       document.title = "HAL Offshore"
     }
   }, [t])
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = decodeURIComponent(location.hash.replace(/^#/, ""))
+      const frame = window.requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
+      })
+      return () => window.cancelAnimationFrame(frame)
+    }
+    window.scrollTo(0, 0)
+  }, [location.pathname, location.hash])
 
   const dir = language === "ar" ? "rtl" : "ltr"
 
@@ -89,7 +104,7 @@ export function OnshoreEpcPage() {
         </section>
 
         <section
-          id="onshore-projects"
+          id="onshore-offerings"
           className="relative border-t border-neutral-200 bg-gradient-to-b from-neutral-50 to-white py-10 sm:py-12 md:py-14"
         >
           <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
@@ -154,6 +169,47 @@ export function OnshoreEpcPage() {
           </div>
         </section>
 
+        <section
+          id="onshore-projects"
+          className="scroll-mt-28 border-t border-neutral-200 bg-white py-10 sm:py-12 md:py-14"
+        >
+          <div className="mx-auto max-w-7xl px-5 sm:px-6">
+            <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="max-w-3xl">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#001F3F]">
+                {t("onshoreEpc.projects")}
+              </p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-neutral-900 sm:text-[1.75rem] md:text-3xl">
+                {t("onshoreEpc.projectsTitle")}
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-600 md:text-base">
+                {t("onshoreEpc.projectsLead")}
+              </p>
+            </motion.div>
+
+            <div className="mt-10 space-y-6">
+              {onshoreEpcProjects.map((project, i) => {
+                const resolved = resolveOnshoreProject(project, t, strings)
+                const cardBg = resolved.cardBackground
+                  ? resolved.cardBackground.includes("/")
+                    ? publicImagePath(resolved.cardBackground)
+                    : publicImagePath(`images/${resolved.cardBackground}`)
+                  : resolved.gallery?.[0]?.src
+                    ? publicImagePath(`images/${resolved.gallery[0].src}`)
+                    : null
+                return (
+                  <OnshoreProjectCaseStudy
+                    key={resolved.id}
+                    project={resolved}
+                    pIdx={i}
+                    cardBgSrc={cardBg}
+                    t={t}
+                  />
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
         <section className="relative overflow-hidden border-t border-neutral-200 border-b border-neutral-200/90 bg-white py-10 sm:py-10 md:py-12">
           <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
             <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="text-center">
@@ -209,18 +265,6 @@ export function OnshoreEpcPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-
-            <motion.div
-              {...revealProps}
-              className="mt-6 rounded-2xl border border-dashed border-[#001F3F]/45 bg-[#fafafa] p-5 sm:p-6"
-            >
-              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-[#001F3F]">
-                {t("onshoreEpc.cohortsPendingTitle")}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-700 sm:text-[0.9375rem]">
-                {t("onshoreEpc.cohortsPendingBody")}
-              </p>
             </motion.div>
           </div>
         </section>

@@ -99,6 +99,7 @@ export const offshoreEpcProjects: OffshoreEpcProject[] = [
     id: "gas-compressors-bcpb",
     index: 2,
     title: "Retrofitting of gas compressors, BCPB-2 platform",
+    cardBackground: "bcpb-2/1-1200.webp",
     scope: [
       "Retrofitting of the existing gas compression system at BCPB-2 platform to operate at a lower suction pressure of 10 kg/cm² instead of 25 kg/cm², enabling handling of low-pressure gas, improving evacuation capability, and enhancing the ultimate recovery and field life of the Bassein reservoir.",
     ],
@@ -116,6 +117,7 @@ export const offshoreEpcProjects: OffshoreEpcProject[] = [
     id: "mol-pumps-bhs",
     index: 3,
     title: "Replacement of 02 MOL pumps – BHS platform, ONGC",
+    cardBackground: "mol-pumps/1-1200.webp",
     scope: [
       "The project involved replacement of two Main Oil Line (MOL) pumps—P-350 and P-360—out of the existing three-pump system at BHS platform, with new 350 m³/hr capacity pumps, while retaining the third pump (P-370) of 700 m³/hr. The objective was to improve operational reliability and maintain steady crude evacuation through the MOL network.",
     ],

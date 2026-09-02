@@ -48,7 +48,8 @@ const fadeUp = {
 }
 
 interface OnshoreProjectCaseStudyProps {
-  project: OnshoreEpcProject
+  project: Pick<OnshoreEpcProject, "id" | "index" | "title"> &
+    Partial<Pick<OnshoreEpcProject, "meta" | "scope" | "highlights" | "achievements" | "stats" | "gallery">>
   pIdx: number
   cardBgSrc: string | null
   t: (key: string) => string
@@ -191,9 +192,11 @@ export function OnshoreProjectCaseStudy({ project, pIdx, cardBgSrc, t }: Onshore
                   <h3 className="text-pretty text-base font-bold leading-snug text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.5)] sm:text-lg md:text-xl">
                     {project.title}
                   </h3>
-                  <p className="mt-1.5 line-clamp-2 text-xs font-medium text-white/85 sm:text-sm">
-                    {project.meta}
-                  </p>
+                  {project.meta ? (
+                    <p className="mt-1.5 line-clamp-2 text-xs font-medium text-white/85 sm:text-sm">
+                      {project.meta}
+                    </p>
+                  ) : null}
                   <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/85 sm:text-xs">
                     {detailsOpen ? t("offshoreEpc.hideProjectDetails") : t("offshoreEpc.viewProjectDetails")}
                   </p>
@@ -234,7 +237,9 @@ export function OnshoreProjectCaseStudy({ project, pIdx, cardBgSrc, t }: Onshore
                 <h3 className="text-lg font-bold leading-snug text-neutral-900 sm:text-xl md:text-2xl">
                   {project.title}
                 </h3>
-                <p className="mt-1.5 text-sm font-medium text-neutral-500">{project.meta}</p>
+                {project.meta ? (
+                  <p className="mt-1.5 text-sm font-medium text-neutral-500">{project.meta}</p>
+                ) : null}
               </div>
             </div>
           </div>
