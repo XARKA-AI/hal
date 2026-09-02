@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useLocation } from "react-router"
+import { Navigate, useLocation } from "react-router"
 import { motion } from "framer-motion"
 import { useLanguage } from "../components/language-context"
 import {
@@ -7,9 +7,6 @@ import {
   StandardPageHeroInset,
 } from "../components/standard-page-hero-inset"
 import { Footer } from "../sections/footer"
-import { offshoreEpcProjects } from "./offshore-epc/content"
-import { OnshoreProjectCaseStudy } from "./onshore-epc/OnshoreProjectCaseStudy"
-import { resolveOffshoreProject } from "../lib/resolve-translated-content"
 
 const fadeUp = {
   initial: { opacity: 0, y: 18 },
@@ -32,7 +29,7 @@ const DELIVERY_IDS = [1, 2, 3, 4] as const
 const DISCIPLINE_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9] as const
 
 export function OffshoreEpcPage() {
-  const { t, language, strings } = useLanguage()
+  const { t, language } = useLanguage()
   const location = useLocation()
 
   useEffect(() => {
@@ -54,6 +51,10 @@ export function OffshoreEpcPage() {
   }, [location.pathname, location.hash])
 
   const dir = language === "ar" ? "rtl" : "ltr"
+
+  if (location.hash === "#offshore-projects") {
+    return <Navigate to="/businesses/offshore-epc/projects" replace />
+  }
 
   return (
     <div className="bg-background text-foreground" dir={dir}>
@@ -180,45 +181,6 @@ export function OffshoreEpcPage() {
                 ))}
               </ul>
             </motion.div>
-          </div>
-        </section>
-
-        <section
-          id="offshore-projects"
-          className="scroll-mt-28 border-t border-neutral-200 bg-white py-10 sm:py-12 md:py-14"
-        >
-          <div className="mx-auto max-w-7xl px-5 sm:px-6">
-            <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="max-w-3xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#001F3F]">
-                {t("offshoreEpc.projects")}
-              </p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-neutral-900 sm:text-[1.75rem] md:text-3xl">
-                {t("offshoreEpc.projectsTitle")}
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-600 md:text-base">
-                {t("offshoreEpc.projectsLead")}
-              </p>
-            </motion.div>
-
-            <div className="mt-10 space-y-6">
-              {offshoreEpcProjects.map((project, i) => {
-                const resolved = resolveOffshoreProject(project, t, strings)
-                const cardBg = resolved.cardBackground
-                  ? resolved.cardBackground.includes("/")
-                    ? publicImagePath(resolved.cardBackground)
-                    : publicImagePath(`images/${resolved.cardBackground}`)
-                  : null
-                return (
-                  <OnshoreProjectCaseStudy
-                    key={resolved.id}
-                    project={resolved}
-                    pIdx={i}
-                    cardBgSrc={cardBg}
-                    t={t}
-                  />
-                )
-              })}
-            </div>
           </div>
         </section>
       </main>

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useLocation } from "react-router"
+import { Navigate, useLocation } from "react-router"
 import { motion, useReducedMotion } from "framer-motion"
 import { useLanguage } from "../components/language-context"
 import {
@@ -8,9 +8,6 @@ import {
 } from "../components/standard-page-hero-inset"
 import { Footer } from "../sections/footer"
 import { translatedLines } from "../lib/i18n-helpers"
-import { onshoreEpcProjects } from "./onshore-epc/content"
-import { OnshoreProjectCaseStudy } from "./onshore-epc/OnshoreProjectCaseStudy"
-import { resolveOnshoreProject } from "../lib/resolve-translated-content"
 
 const fadeUp = {
   initial: { opacity: 0, y: 18 },
@@ -66,6 +63,10 @@ export function OnshoreEpcPage() {
   }, [location.pathname, location.hash])
 
   const dir = language === "ar" ? "rtl" : "ltr"
+
+  if (location.hash === "#onshore-projects") {
+    return <Navigate to="/businesses/onshore-epc/projects" replace />
+  }
 
   return (
     <div className="bg-background text-foreground" dir={dir}>
@@ -165,47 +166,6 @@ export function OnshoreEpcPage() {
                   </p>
                 </motion.article>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="onshore-projects"
-          className="scroll-mt-28 border-t border-neutral-200 bg-white py-10 sm:py-12 md:py-14"
-        >
-          <div className="mx-auto max-w-7xl px-5 sm:px-6">
-            <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="max-w-3xl">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#001F3F]">
-                {t("onshoreEpc.projects")}
-              </p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-neutral-900 sm:text-[1.75rem] md:text-3xl">
-                {t("onshoreEpc.projectsTitle")}
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-600 md:text-base">
-                {t("onshoreEpc.projectsLead")}
-              </p>
-            </motion.div>
-
-            <div className="mt-10 space-y-6">
-              {onshoreEpcProjects.map((project, i) => {
-                const resolved = resolveOnshoreProject(project, t, strings)
-                const cardBg = resolved.cardBackground
-                  ? resolved.cardBackground.includes("/")
-                    ? publicImagePath(resolved.cardBackground)
-                    : publicImagePath(`images/${resolved.cardBackground}`)
-                  : resolved.gallery?.[0]?.src
-                    ? publicImagePath(`images/${resolved.gallery[0].src}`)
-                    : null
-                return (
-                  <OnshoreProjectCaseStudy
-                    key={resolved.id}
-                    project={resolved}
-                    pIdx={i}
-                    cardBgSrc={cardBg}
-                    t={t}
-                  />
-                )
-              })}
             </div>
           </div>
         </section>

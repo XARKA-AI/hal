@@ -22,6 +22,8 @@ HAL Offshore Limited (HAL Offshore) is a leading force in India's oil & gas sect
 - [Businesses](https://haloffshore.com/businesses): Business lines overview
 - [Offshore EPC](https://haloffshore.com/businesses/offshore-epc): Offshore engineering, procurement & construction
 - [Onshore EPC](https://haloffshore.com/businesses/onshore-epc): Onshore EPC and project delivery
+- [Offshore EPC Projects](https://haloffshore.com/businesses/offshore-epc/projects): Offshore EPC project case studies
+- [Onshore EPC Projects](https://haloffshore.com/businesses/onshore-epc/projects): Onshore EPC project case studies
 - [Upstream Oil & Gas](https://haloffshore.com/businesses/upstream-oil-gas): Upstream services
 - [BOO / O&M](https://haloffshore.com/businesses/boo-om): Build-own-operate and operations & maintenance
 - [Green Energy](https://haloffshore.com/businesses/green-energy): Renewable and green energy initiatives

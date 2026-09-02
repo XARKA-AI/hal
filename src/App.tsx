@@ -48,6 +48,12 @@ const OffshoreEpcPage = lazy(() =>
 const OnshoreEpcPage = lazy(() =>
   import("./pages/OnshoreEpcPage").then((m) => ({ default: m.OnshoreEpcPage }))
 )
+const OffshoreEpcProjectsPage = lazy(() =>
+  import("./pages/EpcProjectsPage").then((m) => ({ default: m.OffshoreEpcProjectsPage }))
+)
+const OnshoreEpcProjectsPage = lazy(() =>
+  import("./pages/EpcProjectsPage").then((m) => ({ default: m.OnshoreEpcProjectsPage }))
+)
 const BooOmPage = lazy(() =>
   import("./pages/BooOmPage").then((m) => ({ default: m.BooOmPage }))
 )
@@ -220,14 +226,8 @@ function AppContent() {
           <Route path="/businesses/upstream-oil-gas" element={<UpstreamOilGasPage />} />
           <Route path="/businesses/offshore-epc" element={<OffshoreEpcPage />} />
           <Route path="/businesses/onshore-epc" element={<OnshoreEpcPage />} />
-          <Route
-            path="/businesses/offshore-epc/projects"
-            element={<Navigate to="/businesses/offshore-epc#offshore-projects" replace />}
-          />
-          <Route
-            path="/businesses/onshore-epc/projects"
-            element={<Navigate to="/businesses/onshore-epc#onshore-projects" replace />}
-          />
+          <Route path="/businesses/offshore-epc/projects" element={<OffshoreEpcProjectsPage />} />
+          <Route path="/businesses/onshore-epc/projects" element={<OnshoreEpcProjectsPage />} />
           <Route path="/businesses/boo-om" element={<BooOmPage />} />
           <Route path="/businesses/om" element={<Navigate to="/businesses/boo-om" replace />} />
           <Route path="/businesses/bot" element={<Navigate to="/businesses/boo-om" replace />} />

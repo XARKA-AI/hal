@@ -48,6 +48,18 @@ export const ROUTE_SEO: Record<string, SeoMeta> = {
       "Onshore EPC capabilities — pipelines, compressors, facilities, and integrated project delivery.",
     path: "/businesses/onshore-epc",
   },
+  "/businesses/offshore-epc/projects": {
+    title: `Offshore EPC Projects | ${SITE_NAME}`,
+    description:
+      "Reference offshore EPC projects delivered by HAL Offshore for Indian oil and gas operators.",
+    path: "/businesses/offshore-epc/projects",
+  },
+  "/businesses/onshore-epc/projects": {
+    title: `Onshore EPC Projects | ${SITE_NAME}`,
+    description:
+      "Onshore EPC projects — surface facilities, field infrastructure, replacements and LSTK commissioning.",
+    path: "/businesses/onshore-epc/projects",
+  },
   "/businesses/upstream-oil-gas": {
     title: `Upstream Oil & Gas | ${SITE_NAME}`,
     description: "Upstream oil and gas services and solutions from HAL Offshore.",

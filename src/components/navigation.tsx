@@ -48,8 +48,6 @@ const navItems: NavItemDef[] = [
       pathname === "/businesses/offshore-epc" ||
       pathname === "/businesses/onshore-epc" ||
       pathname === "/businesses/upstream-oil-gas" ||
-      pathname.startsWith("/businesses/offshore-epc/") ||
-      pathname.startsWith("/businesses/onshore-epc/") ||
       pathname.startsWith("/businesses/upstream-oil-gas/"),
     children: [
       { labelKey: "nav.businesses.offshore", to: "/businesses/offshore-epc" },
@@ -65,6 +63,8 @@ const navItems: NavItemDef[] = [
       pathname === "/businesses/bot" ||
       pathname === "/businesses/om" ||
       pathname === "/businesses/green-energy" ||
+      pathname === "/businesses/offshore-epc/projects" ||
+      pathname === "/businesses/onshore-epc/projects" ||
       pathname.startsWith("/businesses/flagship-projects/") ||
       pathname.startsWith("/businesses/boo-om/") ||
       pathname.startsWith("/businesses/green-energy/"),
@@ -74,8 +74,8 @@ const navItems: NavItemDef[] = [
         to: "/businesses/flagship-projects",
         noteKey: "nav.projects.flagshipNote",
       },
-      { labelKey: "nav.projects.offshoreEpc", to: { pathname: "/businesses/offshore-epc", hash: "#offshore-projects" } },
-      { labelKey: "nav.projects.onshoreEpc", to: { pathname: "/businesses/onshore-epc", hash: "#onshore-projects" } },
+      { labelKey: "nav.projects.offshoreEpc", to: "/businesses/offshore-epc/projects" },
+      { labelKey: "nav.projects.onshoreEpc", to: "/businesses/onshore-epc/projects" },
       {
         labelKey: "nav.projects.booOm",
         to: "/businesses/boo-om",
@@ -95,6 +95,10 @@ function isNavChildActive(to: To, pathname: string, hash: string): boolean {
       const path = to.slice(0, i)
       const frag = to.slice(i)
       return pathname === path && hash === frag
+    }
+    // Offerings pages must not stay active on their /projects siblings.
+    if (to === "/businesses/offshore-epc" || to === "/businesses/onshore-epc") {
+      return pathname === to
     }
     return pathname === to || pathname.startsWith(`${to}/`)
   }
