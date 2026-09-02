@@ -32,6 +32,7 @@ const navItems: NavItemDef[] = [
       { labelKey: "nav.about.ceo", to: { pathname: "/about", hash: "#ceo" } },
       { labelKey: "nav.about.journey", to: { pathname: "/about", hash: "#journey" } },
       { labelKey: "nav.about.milestones", to: { pathname: "/about", hash: "#milestones" } },
+      { labelKey: "nav.about.internationalPresence", to: "/about/international-presence" },
       {
         labelKey: "nav.about.hse",
         to: { pathname: "/about", hash: "#hse" },

@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react"
+import { Fragment, useEffect, useState, type ReactNode } from "react"
 import { Link, useLocation } from "react-router"
 import { motion } from "framer-motion"
 import {
@@ -288,17 +288,26 @@ export function AboutPage() {
             <p className="sr-only">{t("aboutPage.jumpNav.label")}</p>
             <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-2 px-4 pb-0.5 pt-0.5 sm:gap-2.5 sm:px-6 md:px-8 lg:px-10">
               {sectionNav.map((item) => (
-                <Link
-                  key={item.id}
-                  to={{ pathname: "/about", hash: `#${item.id}` }}
-                  className={`shrink-0 rounded-full px-4 py-2.5 text-xs font-semibold transition-all duration-300 ease-out sm:px-5 sm:text-sm ${
-                    sidebarActive === item.id
-                      ? "bg-[#001F3F] text-white shadow-sm"
-                      : "bg-neutral-100/90 text-neutral-700 hover:bg-neutral-200/90 hover:text-[#001F3F]"
-                  }`}
-                >
-                  {t(item.labelKey)}
-                </Link>
+                <Fragment key={item.id}>
+                  <Link
+                    to={{ pathname: "/about", hash: `#${item.id}` }}
+                    className={`shrink-0 rounded-full px-4 py-2.5 text-xs font-semibold transition-all duration-300 ease-out sm:px-5 sm:text-sm ${
+                      sidebarActive === item.id
+                        ? "bg-[#001F3F] text-white shadow-sm"
+                        : "bg-neutral-100/90 text-neutral-700 hover:bg-neutral-200/90 hover:text-[#001F3F]"
+                    }`}
+                  >
+                    {t(item.labelKey)}
+                  </Link>
+                  {item.id === "milestones" ? (
+                    <Link
+                      to="/about/international-presence"
+                      className="shrink-0 rounded-full bg-neutral-100/90 px-4 py-2.5 text-xs font-semibold text-neutral-700 transition-all duration-300 ease-out hover:bg-neutral-200/90 hover:text-[#001F3F] sm:px-5 sm:text-sm"
+                    >
+                      {t("nav.about.internationalPresence")}
+                    </Link>
+                  ) : null}
+                </Fragment>
               ))}
             </div>
           </div>

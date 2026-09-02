@@ -113,6 +113,7 @@ export const onshoreEpcProjects: OnshoreEpcProject[] = [
       "Compressor configuration: LP centrifugal + HP reciprocating trains.",
       "RO water–based cooling system for inter-stage coolers.",
       "Continuous HP air supply for multiple injector wells across the field.",
+      "Replacement executed within a new dedicated plot area.",
     ],
     achievements: [
       "Enhanced reliability and continuous HP air availability across the asset.",
@@ -131,6 +132,18 @@ export const onshoreEpcProjects: OnshoreEpcProject[] = [
     index: 3,
     title: "Field-wide ASP Injection Scheme — Viraj",
     meta: "Ahmedabad asset · Alkaline Surfactant Polymer (ASP) flood",
+    scope: [
+      "Field-wide implementation of the Alkaline Surfactant Polymer (ASP) injection scheme at Viraj, Ahmedabad, for ONGC.",
+    ],
+    highlights: [
+      "Site location: Ahmedabad.",
+      "Completion: 06 July 2019.",
+      "Schedule: 14 months from date of NOA.",
+    ],
+    achievements: [
+      "Successfully executed the polymer / ASP injection project for ONGC Viraj.",
+      "Followed by long-term operations and maintenance, demonstrating expertise in enhanced oil recovery facilities.",
+    ],
     stats: [
       { label: "Site", value: "Ahmedabad" },
       { label: "Completion", value: "06 July 2019" },
@@ -152,6 +165,13 @@ export const onshoreEpcProjects: OnshoreEpcProject[] = [
     index: 4,
     title: "Replacement of Air Compressors — Mehsana Asset",
     meta: "ONGC · Mehsana",
+    scope: [
+      "Replacement of air compressors at Mehsana Asset, ONGC.",
+    ],
+    highlights: [
+      "Site location: Mehsana.",
+      "Completion status: under commissioning.",
+    ],
     stats: [
       { label: "Site", value: "Mehsana" },
       { label: "Status", value: "Under commissioning" },
@@ -172,6 +192,14 @@ export const onshoreEpcProjects: OnshoreEpcProject[] = [
     index: 5,
     title: "Linch Redevelopment Project with 7-year O&M",
     meta: "ONGC · Mehsana asset · EPC + Operations & Maintenance",
+    scope: [
+      "Linch redevelopment project at Mehsana Asset, ONGC, along with operations and maintenance for seven years.",
+    ],
+    highlights: [
+      "Site location: Mehsana.",
+      "O&M duration: 7 years.",
+      "Completion status: under commissioning.",
+    ],
     stats: [
       { label: "Site", value: "Mehsana" },
       { label: "O&M term", value: "7 years" },
@@ -189,6 +217,13 @@ export const onshoreEpcProjects: OnshoreEpcProject[] = [
     index: 6,
     title: "RVMP — North Santhal",
     meta: "ONGC · North Santhal field",
+    scope: [
+      "RVMP project at North Santhal field.",
+    ],
+    highlights: [
+      "Site location: North Santhal.",
+      "Completion: 17 November 2020.",
+    ],
     stats: [
       { label: "Site", value: "North Santhal" },
       { label: "Completion", value: "17 Nov 2020" },
@@ -205,6 +240,13 @@ export const onshoreEpcProjects: OnshoreEpcProject[] = [
     index: 7,
     title: "RVMP — South Santhal",
     meta: "ONGC · South Santhal field",
+    scope: [
+      "RVMP project at South Santhal field.",
+    ],
+    highlights: [
+      "Site location: South Santhal.",
+      "Completion: 17 November 2020.",
+    ],
     stats: [
       { label: "Site", value: "South Santhal" },
       { label: "Completion", value: "17 Nov 2020" },

@@ -30,6 +30,12 @@ export const ROUTE_SEO: Record<string, SeoMeta> = {
       "Learn about HAL Offshore — our leadership, journey, HSE commitment, and decades of excellence in India's oil and gas sector.",
     path: "/about",
   },
+  "/about/international-presence": {
+    title: `International Presence | ${SITE_NAME}`,
+    description:
+      "HAL Group international offices — HAL Energy LLC in Al Khobar, Saudi Arabia, and HAL Contracting LLC in Abu Dhabi, UAE. Mumbai remains the registered headquarters of HAL Offshore Limited.",
+    path: "/about/international-presence",
+  },
   "/businesses": {
     title: `Businesses | ${SITE_NAME}`,
     description:

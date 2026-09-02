@@ -19,6 +19,7 @@ HAL Offshore Limited (HAL Offshore) is a leading force in India's oil & gas sect
 
 - [Home](https://haloffshore.com/): Corporate landing — hero, clients, services, fleet, news, investors
 - [About](https://haloffshore.com/about): Company overview, leadership, journey, HSE, management
+- [International Presence](https://haloffshore.com/about/international-presence): HAL Group offices in Saudi Arabia (HAL Energy LLC, Al Khobar) and the UAE (HAL Contracting LLC, Abu Dhabi)
 - [Businesses](https://haloffshore.com/businesses): Business lines overview
 - [Offshore EPC](https://haloffshore.com/businesses/offshore-epc): Offshore engineering, procurement & construction
 - [Onshore EPC](https://haloffshore.com/businesses/onshore-epc): Onshore EPC and project delivery

@@ -42,6 +42,11 @@ const BusinessesPage = lazy(() =>
 const AboutPage = lazy(() =>
   import("./pages/AboutPage").then((m) => ({ default: m.AboutPage }))
 )
+const InternationalPresencePage = lazy(() =>
+  import("./pages/InternationalPresencePage").then((m) => ({
+    default: m.InternationalPresencePage,
+  })),
+)
 const OffshoreEpcPage = lazy(() =>
   import("./pages/OffshoreEpcPage").then((m) => ({ default: m.OffshoreEpcPage }))
 )
@@ -220,6 +225,11 @@ function AppContent() {
           <Route path="/about/milestones" element={<Navigate to="/about#milestones" replace />} />
           <Route path="/about/hse" element={<Navigate to="/about#hse" replace />} />
           <Route path="/about/management" element={<Navigate to="/about#management" replace />} />
+          <Route path="/about/international-presence" element={<InternationalPresencePage />} />
+          <Route
+            path="/about/international-offices"
+            element={<Navigate to="/about/international-presence" replace />}
+          />
 
           {/* Businesses */}
           <Route path="/businesses" element={<BusinessesPage />} />
