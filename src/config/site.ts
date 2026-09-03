@@ -119,6 +119,12 @@ export const ROUTE_SEO: Record<string, SeoMeta> = {
       "Coke Drum Structure Package for the DCU revamp at the Numaligarh Refinery Expansion Project — EPC, testing and commissioning gallery and case study.",
     path: "/businesses/flagship-projects/dcu-numaligarh",
   },
+  "/businesses/flagship-projects/nspl": {
+    title: `NSPL Composite Works | ${SITE_NAME}`,
+    description:
+      "Composite works (Part-A, B & C) for the NSPL (Numaligarh-Siliguri Multiproduct Pipeline) facilities upgradation project.",
+    path: "/businesses/flagship-projects/nspl",
+  },
   "/careers": {
     title: `Careers | ${SITE_NAME}`,
     description: "Join HAL Offshore — submit your résumé and a short note for future openings.",

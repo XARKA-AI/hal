@@ -106,6 +106,11 @@ const DcuNumaligarhGalleryPage = lazy(() =>
     default: m.DcuNumaligarhGalleryPage,
   }))
 )
+const NsplGalleryPage = lazy(() =>
+  import("./pages/flagship/NsplGalleryPage").then((m) => ({
+    default: m.NsplGalleryPage,
+  }))
+)
 const UpstreamOilGasPage = lazy(() =>
   import("./pages/BusinessOfferingDetailPages").then((m) => ({ default: m.UpstreamOilGasPage }))
 )
@@ -266,6 +271,10 @@ function AppContent() {
           <Route
             path="/businesses/flagship-projects/dcu-numaligarh"
             element={<DcuNumaligarhGalleryPage />}
+          />
+          <Route
+            path="/businesses/flagship-projects/nspl"
+            element={<NsplGalleryPage />}
           />
 
           {/* Careers */}

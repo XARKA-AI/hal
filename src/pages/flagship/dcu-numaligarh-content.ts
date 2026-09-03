@@ -16,7 +16,7 @@ export const DCU_VARIANT_WIDTHS = [480, 768, 1200, 1672] as const
 const FALLBACK_WIDTH = 1200
 
 /** Photograph indices, in the order they appear in the project document. */
-export const DCU_GALLERY_IMAGES = [1, 2, 3, 4, 5, 6, 7] as const
+export const DCU_GALLERY_IMAGES = [1, 2, 3] as const
 
 /** Rendered first, so it is the one worth preloading. */
 export const DCU_HERO_IMAGE = 1

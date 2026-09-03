@@ -45,6 +45,11 @@ import {
   DCU_NUMALIGARH_GALLERY_ROUTE,
   dcuImageSrcSet,
 } from "./flagship/dcu-numaligarh-content"
+import {
+  NSPL_CARD_SIZES,
+  NSPL_GALLERY_ROUTE,
+  nsplImageSrcSet,
+} from "./flagship/nspl-content"
 
 export type BusinessOfferingVariant = "greenEnergy" | "flagship" | "upstreamOilGas"
 
@@ -155,6 +160,14 @@ const CONFIG: Record<
         altKey: "flagshipPage.gallery.dcuAlt",
         captionKey: "flagshipPage.gallery.dcuCaption",
         galleryHref: DCU_NUMALIGARH_GALLERY_ROUTE,
+      },
+      {
+        src: "nspl/1-1200.webp",
+        srcSet: nsplImageSrcSet(1),
+        sizes: NSPL_CARD_SIZES,
+        altKey: "flagshipPage.gallery.nsplAlt",
+        captionKey: "flagshipPage.gallery.nsplCaption",
+        galleryHref: NSPL_GALLERY_ROUTE,
       },
       {
         src: "images/flagship-projects/nandasan-facility.webp",
