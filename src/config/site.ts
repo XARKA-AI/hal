@@ -33,7 +33,7 @@ export const ROUTE_SEO: Record<string, SeoMeta> = {
   "/about/international-presence": {
     title: `International Presence | ${SITE_NAME}`,
     description:
-      "HAL Group international offices — HAL Energy LLC in Al Khobar, Saudi Arabia, and HAL Contracting LLC in Abu Dhabi, UAE. Mumbai remains the registered headquarters of HAL Offshore Limited.",
+      "HAL Group international offices — HAL Energy Company LLC in Al Khobar, Saudi Arabia, and HAL Contracting LLC in Abu Dhabi, UAE. Mumbai remains the registered headquarters of HAL Offshore Limited.",
     path: "/about/international-presence",
   },
   "/businesses": {
