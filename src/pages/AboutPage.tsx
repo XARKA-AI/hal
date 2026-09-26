@@ -436,9 +436,6 @@ export function AboutPage() {
                     ))}
                   </ul>
                 </div>
-                <p className="border-t border-neutral-200 pt-8 font-mono text-xs text-neutral-500 md:text-sm">
-                  {t("aboutPage.mission.docRef")}
-                </p>
               </div>
             </section>
 
@@ -660,9 +657,6 @@ export function AboutPage() {
                             <li key={idx}>{t(`aboutPage.hse.${block.key}.b${idx + 1}`)}</li>
                           ))}
                         </ul>
-                        <p className="mt-8 border-t border-neutral-200 pt-6 font-mono text-xs text-neutral-500 md:text-sm">
-                          {t(`aboutPage.hse.${block.key}.docRef`)}
-                        </p>
                       </div>
                     </div>
                   </motion.article>

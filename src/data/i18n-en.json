@@ -997,7 +997,6 @@
   "aboutPage.mission.value3.body": "Operating as a highly ethical organization that respects individual dignity, obeys all statutory laws, protects the environment, and maintains equal opportunity practices.",
   "aboutPage.mission.value4.title": "Our Workplace",
   "aboutPage.mission.value4.body": "Ensuring a clean, safe, productive, healthy, and participative work environment that encourages open communication and teamwork.",
-  "aboutPage.mission.docRef": "misvisval/hal/eng/001",
   "aboutPage.hse.achievedBy": "Achieved by",
   "aboutPage.hse.ims.title": "Integrated Management System (IMS) Policy",
   "aboutPage.hse.ims.intro": "HAL OFFSHORE LIMITED is engaged in Engineering, Procurement, Construction, Commissioning and Operation & Maintenance for Oil & Gas EPC (Engineering Procurement and Construction) and LSTK (Lump-Sum turnkey) projects. We are committed to conducting our business with integrity, responsibility and respect for people, the environment and the communities in which we operate. We are committed to achieving customer satisfaction through high-quality professional project management, engineering, procurement, construction, installation, commissioning and timely completion of projects, while protecting the environment and providing safe and healthy working conditions. HAL OFFSHORE LIMITED shall:",
@@ -1012,14 +1011,12 @@
   "aboutPage.hse.ims.b9": "Establish measurable IMS objectives and targets and monitor performance.",
   "aboutPage.hse.ims.b10": "Continually improve the effectiveness of the Integrated Management System and overall performance.",
   "aboutPage.hse.ims.b11": "Demonstrate Top Management commitment by providing the leadership and resources necessary to implement and maintain the IMS.",
-  "aboutPage.hse.ims.docRef": "imspolicy/hal/eng/001",
   "aboutPage.hse.quality.title": "Quality Policy",
   "aboutPage.hse.quality.intro": "We, HAL OFFSHORE LIMITED are in the business of specific Oil & Gas EPC (Engineering Procurement and Construction) and LSTK (Lump-Sum turnkey) projects. We are committed to satisfy our customers, by offering High-Quality Professional project Management Smooth Project Installation, Commissioning and Timely completion of Projects.",
   "aboutPage.hse.quality.b1": "Involvement of our employees and striving for continual improvement in Project Engineering, Project Management Control and Execution.",
   "aboutPage.hse.quality.b2": "Continual Improvement of our Engineering Designs, Processes, Quality Control and Assurance Systems.",
   "aboutPage.hse.quality.b3": "Complying with applicable Statutory and Regulatory requirements, Safety Norms, applicable International Standards and Codes.",
   "aboutPage.hse.quality.b4": "Incident / Accident-free Project Execution.",
-  "aboutPage.hse.quality.docRef": "qpolicy/hal/eng/001",
   "aboutPage.hse.hsePolicy.title": "HSE Policy",
   "aboutPage.hse.hsePolicy.intro": "HAL Offshore Ltd.'s activities are undertaken with integrity, responsibility, respect for the health, safety, environment and the community in which these activities take place. This entails conducting operations in an ethically and practically sound manner that minimizes risks and places high priority on the safety of those involved in our ongoing Oil & Gas EPC (Engineering Procurement and Construction) and LSTK (Lump-Sum turnkey) projects. HAL Offshore Ltd. is committed to:",
   "aboutPage.hse.hsePolicy.b1": "Continual improvement of the HSE management system.",
@@ -1030,6 +1027,5 @@
   "aboutPage.hse.hsePolicy.b6": "Provide training, equipment and facilities necessary to maintain a safe and healthy worksite.",
   "aboutPage.hse.hsePolicy.b7": "Support environmental protection, practice pollution prevention, and seek viable ways to minimize the environmental impact of operations, reduce waste, conserve resources, respect biodiversity and other specific commitments relevant to the context of HAL Offshore Limited.",
   "aboutPage.hse.hsePolicy.b8": "Ensure that partners and contractors' policies are compliant with our own standards and recognize that all working on our behalf can impact our operation and reputation and that we all share a common responsibility for our safety.",
-  "aboutPage.hse.hsePolicy.b9": "Consultation and participation of workers, and workers' representatives.",
-  "aboutPage.hse.hsePolicy.docRef": "hsepolicy/hal/eng/001"
+  "aboutPage.hse.hsePolicy.b9": "Consultation and participation of workers, and workers' representatives."
 }
