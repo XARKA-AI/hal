@@ -1,4 +1,5 @@
 import { Award, Shield, Clock } from "lucide-react"
+import { Link } from "react-router"
 import { useLanguage } from "../components/language-context"
 import { Reveal } from "../components/reveal"
 
@@ -40,6 +41,14 @@ export function About() {
                   <p key={key}>{t(key)}</p>
                 ),
               )}
+              <p>
+                <Link
+                  to="/about#mission"
+                  className="font-semibold text-[#001F3F] underline-offset-4 transition-colors hover:underline"
+                >
+                  {t("homeAbout.missionLink")}
+                </Link>
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

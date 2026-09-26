@@ -3,9 +3,13 @@ import { Link, useLocation } from "react-router"
 import { motion } from "framer-motion"
 import {
   ArrowRight,
-  Leaf,
   HardHat,
   ClipboardCheck,
+  Layers,
+  Users,
+  Lightbulb,
+  Scale,
+  Building2,
 } from "lucide-react"
 import { useLanguage } from "../components/language-context"
 import { PageSeo } from "../components/seo"
@@ -32,6 +36,7 @@ const milestonesTimeline = [
 const sectionNav = [
   { id: "overview", labelKey: "aboutPage.overview.title" },
   { id: "company", labelKey: "aboutPage.company.title" },
+  { id: "mission", labelKey: "aboutPage.mission.navLabel" },
   { id: "chairman", labelKey: "aboutPage.chairman.title" },
   { id: "vice-chairman", labelKey: "aboutPage.viceChairman.navLabel" },
   { id: "ceo", labelKey: "aboutPage.ceo.navLabel" },
@@ -40,12 +45,42 @@ const sectionNav = [
   { id: "management", labelKey: "aboutPage.management.title" },
 ] as const
 
+const missionValues = [
+  { icon: Users, k: "value1" },
+  { icon: Lightbulb, k: "value2" },
+  { icon: Scale, k: "value3" },
+  { icon: Building2, k: "value4" },
+] as const
+
+const policyBlocks = [
+  {
+    key: "ims",
+    icon: Layers,
+    bullets: 11,
+    showAchievedBy: false,
+  },
+  {
+    key: "quality",
+    icon: ClipboardCheck,
+    bullets: 4,
+    showAchievedBy: true,
+  },
+  {
+    key: "hsePolicy",
+    icon: HardHat,
+    bullets: 9,
+    showAchievedBy: false,
+  },
+] as const
+
 /** Alternate hashes that still scroll to the existing section IDs. */
 const ABOUT_HASH_ALIASES: Record<string, string> = {
   "hal-company": "company",
   "chairman-message": "chairman",
   "ceo-coo": "ceo",
   qhse: "hse",
+  policies: "hse",
+  "mission-vision": "mission",
   "management-team": "management",
 }
 
@@ -343,6 +378,70 @@ export function AboutPage() {
               />
             </section>
 
+            {/* Mission, Vision & Values */}
+            <section
+              id="mission"
+              className="scroll-mt-40 border-t border-neutral-200/80 pt-20 md:pt-28 lg:pt-32"
+            >
+              <ValenceSectionHeader
+                label={t("aboutPage.mission.kicker")}
+                title={t("aboutPage.mission.title")}
+                description={t("aboutPage.mission.lead")}
+              />
+              <div className="mt-14 space-y-12 md:mt-20 md:space-y-16">
+                <div className="rounded-sm border border-neutral-200 bg-neutral-50/50 p-6 sm:p-8 md:p-10">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+                    {t("aboutPage.mission.missionLabel")}
+                  </p>
+                  <p className="mt-4 text-pretty text-base leading-[1.75] text-neutral-700 md:text-lg">
+                    {t("aboutPage.mission.missionBody")}
+                  </p>
+                </div>
+                <div className="rounded-sm border border-neutral-200 bg-neutral-50/50 p-6 sm:p-8 md:p-10">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+                    {t("aboutPage.mission.visionLabel")}
+                  </p>
+                  <p className="mt-4 text-pretty text-base leading-[1.75] text-neutral-700 md:text-lg">
+                    {t("aboutPage.mission.visionBody")}
+                  </p>
+                </div>
+                <div>
+                  <p className="mb-8 text-center text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500 md:mb-10">
+                    {t("aboutPage.mission.valuesLabel")}
+                  </p>
+                  <ul className="grid gap-6 sm:grid-cols-2">
+                    {missionValues.map((item, i) => (
+                      <motion.li
+                        key={item.k}
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.25, 0.1, 0.25, 1],
+                          delay: i * 0.05,
+                        }}
+                        className="border border-neutral-200 p-6 md:p-7"
+                      >
+                        <div className="flex h-11 w-11 items-center justify-center bg-[#001F3F] text-white">
+                          <item.icon className="h-5 w-5" aria-hidden />
+                        </div>
+                        <h3 className="mt-5 text-lg font-bold text-[#001F3F] md:text-xl">
+                          {t(`aboutPage.mission.${item.k}.title`)}
+                        </h3>
+                        <p className="mt-3 text-pretty text-base leading-[1.7] text-neutral-600 md:text-lg">
+                          {t(`aboutPage.mission.${item.k}.body`)}
+                        </p>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+                <p className="border-t border-neutral-200 pt-8 font-mono text-xs text-neutral-500 md:text-sm">
+                  {t("aboutPage.mission.docRef")}
+                </p>
+              </div>
+            </section>
+
             <section
               id="chairman"
               className="scroll-mt-40 -mx-6 rounded-sm border-y border-neutral-200/90 bg-neutral-50/60 px-6 py-12 md:-mx-8 md:px-8 md:py-16 lg:mx-0 lg:px-0 lg:py-20"
@@ -517,44 +616,58 @@ export function AboutPage() {
               </ol>
             </section>
 
-            {/* HSE — divider list */}
+            {/* Policies — IMS, Quality, HSE (keep #hse / #qhse anchors) */}
             <section id="hse" className="scroll-mt-40 border-t border-neutral-200/80 pt-20 md:pt-28 lg:pt-32">
               <div id="qhse" className="pointer-events-none h-0 scroll-mt-40" aria-hidden />
+              <div id="policies" className="pointer-events-none h-0 scroll-mt-40" aria-hidden />
               <ValenceSectionHeader
                 label={t("aboutPage.hse.kicker")}
                 title={t("aboutPage.hse.title")}
                 description={t("aboutPage.hse.lead")}
               />
-              <ul className="mt-16 border-t border-neutral-200 md:mt-20">
-                {(
-                  [
-                    { icon: HardHat, k: "card1" },
-                    { icon: ClipboardCheck, k: "card2" },
-                    { icon: Leaf, k: "card3" },
-                  ] as const
-                ).map((item, i) => (
-                  <motion.li
-                    key={item.k}
+              <div className="mt-16 space-y-14 md:mt-20 md:space-y-16">
+                {policyBlocks.map((block, i) => (
+                  <motion.article
+                    key={block.key}
                     initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.06 }}
-                    className="grid gap-7 border-b border-neutral-200 py-12 md:grid-cols-12 md:items-start md:gap-x-12 md:gap-y-0 md:py-14 lg:py-10"
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.25, 0.1, 0.25, 1],
+                      delay: Math.min(i * 0.06, 0.18),
+                    }}
+                    className="border border-neutral-200 p-6 sm:p-8 md:p-10"
                   >
-                    <div className="flex gap-5 md:col-span-4 lg:col-span-3">
+                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#001F3F] text-white">
-                        <item.icon className="h-5 w-5" aria-hidden />
+                        <block.icon className="h-5 w-5" aria-hidden />
                       </div>
-                      <h3 className="pt-1.5 text-lg font-bold text-[#001F3F] md:text-xl">
-                        {t(`aboutPage.hse.${item.k}.title`)}
-                      </h3>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-xl font-bold text-[#001F3F] md:text-2xl">
+                          {t(`aboutPage.hse.${block.key}.title`)}
+                        </h3>
+                        <p className="mt-4 text-pretty text-base leading-[1.75] text-neutral-600 md:text-lg">
+                          {t(`aboutPage.hse.${block.key}.intro`)}
+                        </p>
+                        {block.showAchievedBy ? (
+                          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.12em] text-neutral-500">
+                            {t("aboutPage.hse.achievedBy")}
+                          </p>
+                        ) : null}
+                        <ul className="mt-4 list-disc space-y-2.5 ps-5 text-pretty text-base leading-[1.7] text-neutral-700 md:mt-5 md:text-lg">
+                          {Array.from({ length: block.bullets }, (_, idx) => (
+                            <li key={idx}>{t(`aboutPage.hse.${block.key}.b${idx + 1}`)}</li>
+                          ))}
+                        </ul>
+                        <p className="mt-8 border-t border-neutral-200 pt-6 font-mono text-xs text-neutral-500 md:text-sm">
+                          {t(`aboutPage.hse.${block.key}.docRef`)}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-base leading-[1.75] text-neutral-600 md:col-span-8 md:text-lg lg:col-span-9">
-                      {t(`aboutPage.hse.${item.k}.body`)}
-                    </p>
-                  </motion.li>
+                  </motion.article>
                 ))}
-              </ul>
+              </div>
             </section>
 
             {/* Management — list rows */}

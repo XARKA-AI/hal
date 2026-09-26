@@ -6,6 +6,8 @@ import { Reveal } from "../components/reveal"
 const companyLinkKeys = [
   { labelKey: "nav.home", to: "/" },
   { labelKey: "nav.about", to: "/about" },
+  { labelKey: "footer.link.mission", to: "/about#mission" },
+  { labelKey: "footer.link.policies", to: "/about#hse" },
   { labelKey: "footer.link.certificates", to: "/#certificates" },
   { labelKey: "nav.milestones", to: "/about#milestones" },
   { labelKey: "nav.fleet", to: "/#fleet" },

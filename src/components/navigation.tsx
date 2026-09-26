@@ -27,6 +27,7 @@ const navItems: NavItemDef[] = [
     children: [
       { labelKey: "nav.about.overview", to: { pathname: "/about", hash: "#overview" } },
       { labelKey: "nav.about.company", to: { pathname: "/about", hash: "#company" } },
+      { labelKey: "nav.about.mission", to: { pathname: "/about", hash: "#mission" } },
       { labelKey: "nav.about.chairman", to: { pathname: "/about", hash: "#chairman" } },
       { labelKey: "nav.about.viceChairman", to: { pathname: "/about", hash: "#vice-chairman" } },
       { labelKey: "nav.about.ceo", to: { pathname: "/about", hash: "#ceo" } },
